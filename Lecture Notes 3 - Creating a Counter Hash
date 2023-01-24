@@ -1,0 +1,15 @@
+# Hash.new(0): Works fine because we cant mutate integers
+
+# h = Hash.new { |h, k| = h[k] = 0 }
+
+# counter = Hash.new(0)
+# => {}
+# counter [:amin] += 1 
+# => 1                    ... weve changed it to 1 because weve done a reassignment
+# counter [:amin]
+# => 1 
+# counter [:kyle]
+# => 0
+# counter 
+# {:amin => 1}
+

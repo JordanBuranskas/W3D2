@@ -1,0 +1,69 @@
+# Niave approach- Array.new (3, [])
+# Correct approach : Array.new(3) {[]} || Array.new(3){Array.new}
+
+
+# Ex. Array.new(3, [])
+#  => [[], [], []]
+
+#  vs. Array.new(3){Array.new([])}
+#  ==>
+
+#  grid[0] << x
+#  => [[x], [], []]
+
+#  Making Hash with Array default
+
+#  Naive approach: Hash.new([])
+#  Naive appraoch 2: Hash.new {[]}
+#  Correct approach: Hash.new{ |h, k| h[k] = []}
+
+#  EX. h = Hash.new([])
+#  ==> {}
+#  h[:greetings] << "hello"
+#  => ["hello"]
+#  h[:greetings]
+#  => ["hello"]
+#  h[:farewells]
+#  => ["hello"]  ... uh oh this is a problem. H of anything is going to equal "hello" because we shoveled it into the hash without assigning it to a value.
+#  h 
+#  ==> {}    ... its still just a bracket
+
+#  any time we accesss akey that has not been explicilty assigned, then the hash is just going to return that default value, it wont be teathered
+#  to a key. It will just  be sitting in the hash, unassigned to any key.
+
+#  We mutated the default value of the hash.
+
+#  We never made a key assiggmnet, never said h[k] equals something.
+
+#  Ex. 2  h = Hash.new {[]}
+#         => {}
+#         h[:greetings] << "hello"
+#         => ["hello"]
+#         h[:greetings]
+#         => []           ... we wanted this to have hello inside of it, but its still empty.
+#         h[:farewells]
+#         => []
+#         h 
+#         ==> {}    ... its still just a bracket
+
+# Ex 3.  h = Hash.new { |h, k| h[k] = []} - can take parameters including the hash itself (h) and the key. The logic we want the blcok to perform, is takethe 
+# hash and key into (k) and explicitly set that to an empty array.
+#         ==> {} 
+#         h[:greetings] << "hello"
+#         => ["hello"]
+#         h[:greetings] 
+#         => ["hello"]
+#         h[:farewells]
+#         => []
+#         h 
+#         => {:   greeting =>["hello"], :farewells => []}
+
+
+      
+
+
+
+
+
+
+

@@ -1,0 +1,75 @@
+# SCOPE
+
+# x = 2
+
+# def each do 
+#     x *= 2
+# end
+
+# puts x
+
+# returns 16
+
+
+# vs
+
+# def each do 
+#     x - 2
+# end
+
+# puts x
+
+# returns error message because x only exists in the block, not outside and were puts-ing outside
+# the block. it only exists between the do and the end. 
+
+#     x = 10
+
+#     def some_method
+#         puts x
+#     end
+
+#     some_method
+
+#     we get another error message beecasuse when we defined some-method we created a scope and we dont have aaccesss 
+#     to any of the varaibles that eexist outside of the scope-- thats why we hve to pass that exterior variabnle of 
+#     x into the block, so the scope of the block can recogonize it
+#     that variable wont exist inside of the scope of the def until we tell it to
+
+#     Parameters VS Arguments
+
+#     Parameters - variables in a methid definition
+#     Arguments - varaiable method is invoked with
+
+#     `   -in the scope of a method, the parameter is a copy of the argument that the method was invoked with- both are references`
+#             - in essesnce another reference is created, that points to the same spot in memory as the argument passed in
+#         -Therefore if we reassign the parameter within the methord, the argument that the method was invoked in is unaffected 
+#         -But if we mutate the parameter withtin the method this affects.. (didnt get the rest)
+
+#         Ex. def in(num)
+#                 num += 1
+#             end
+
+#             a = 1
+#         inc(a)
+
+#             puts a 
+
+#         -theres a reaaagnment happening within inside our method, not a mutation
+#         -a still equals 1. 
+#         -key takeaway: because our num parameer is just a ref. when we use a as our num, were making a copy basically. 
+#         then inside the method we are reassigning num. its no longer a.. it because the product of what the method creates using a as a baseline
+#         but it does not reassign a.
+
+#         Ex 2. def add-square(arr, num)
+#                 arr << (num ** 2)
+#                 end
+
+#                 squares = [1, 4, 9]
+#                 add_square(squares, 4)
+
+#                 p squares 
+
+#         - prints as [1, 4, 9, 16] because we mutated the array inside of the method, using a shovel operator 
+
+
+#         We need to keep this in mind while we code... how are we changing things.
