@@ -4,7 +4,8 @@ require_relative "card"
 
 class Board
     attr_reader :grid
-    
+
+
    
     def initialize
         @grid = Array.new(4) {Array.new(4)}
@@ -19,31 +20,34 @@ class Board
     end
 
     def populate
-
-           card_array = []     #stores our cards ready to be placed
-
-        @@face_values.each do |card_face|
+        card_array = []     #stores our cards ready to be placed
+        face_values = ["a","b", "c", "d", "e", "f", "g", "h"]
+        face_values.each do |card_face|
             2.times do 
                 card_array << Card.new(card_face)
             end 
         end 
-                                                    #card_array
-                                                    # [aa bb cc dd ee ff gg hh]
-             card_array.shuffle!
-                                                # card_array = [h g f e d b c a a d e b c h g f]
-            
-                @grid.each do |row|
-                    new_row =[]    
-                    
-                    card_array.each do |card|
-                    new_row << row[i] = card
-
-        
+        card_array.shuffle!
+        i = card_array.length-1
+        #while i >= 0 
+            @grid.each_with_index do |row, k| 
+                row.each_with_index do |card, j|
+                    #card = Card.new(card_array[i])
+                    @grid[k][j] = card_array[i]
+                    i -= 1
                 end
             end
-
-            @grid << new_row
-            
+        #end
+        #@grid
+    end
+    
+    def render
+        @grid.each do |row|
+            row.each do |card|
+                puts card.face_value
+            end
+        end
+    end
                         
      
 end
