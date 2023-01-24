@@ -5,7 +5,7 @@ require_relative "card"
 class Board
     attr_reader :grid
     
-    @@face_values = ['a', 'b', 'c' , 'd']
+   
     def initialize
         @grid = Array.new(4) {Array.new(4)}
     end
@@ -19,20 +19,31 @@ class Board
     end
 
     def populate
+
+           card_array = []     #stores our cards ready to be placed
+
         @@face_values.each do |card_face|
-            coordinate_history = []
             2.times do 
-                pos = nil
-                while coordinate_history.include?(pos)
-                    row = rand(0...@grid.length)
-                    col = rand(0...@grid.length)
-                    pos = [row, col]
-                    if !coordinate_history.include?(pos)
-                        @grid[pos] = Card.new(card_face)
-                        coordinate_history << pos
-                    end
+                card_array << Card.new(card_face)
+            end 
+        end 
+                                                    #card_array
+                                                    # [aa bb cc dd ee ff gg hh]
+             card_array.shuffle!
+                                                # card_array = [h g f e d b c a a d e b c h g f]
+            
+                @grid.each do |row|
+                    new_row =[]    
+                    
+                    card_array.each do |card|
+                    new_row << row[i] = card
+
+        
                 end
             end
-        end
-    end
+
+            @grid << new_row
+            
+                        
+     
 end

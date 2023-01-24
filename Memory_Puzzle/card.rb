@@ -1,5 +1,5 @@
 class Card
-    attr_reader :face_value, :face_up
+    
 
 
 
@@ -12,16 +12,24 @@ class Card
         return face_value if face_up
     end
 
+    def face_value 
+        @face_value
+    end
+
+    def face_up
+        @face_up
+    end
+
     def hide
-        face_up == false
+        @face_up == false
     end
 
     def reveal
-        face_up == true
+        @face_up == true
     end
 
     def to_s
-        face_value
+        @face_value.to_s
     end
 
     def ==(other_card)
